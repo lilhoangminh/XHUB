@@ -14,7 +14,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url("./sign-page.jpg") center center fixed;
+    background: url("../img/banner.jpg") center center fixed;
     overflow-y: scroll;
 }
 
