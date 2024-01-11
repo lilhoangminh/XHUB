@@ -20,7 +20,7 @@ checkLogIn();
 function fetchDetailApi() {
     let globalLogData = getLocalStorage("GLOBAL_LOG_DATA");
     fetch(`https://xhubapi.voca.io.vn/api/v1/auth/me`, {
-        method: "POST",
+        method: "GET",
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${globalLogData.token}`
