@@ -21,8 +21,7 @@ let logData = {
     login: {
         "email": "",
         "password": "",
-        "role": "",
-        "name": ""
+        "role": ""
     }
 }
 
@@ -33,8 +32,14 @@ let globalLogData = {
     token: ""
 }
 
+let checkLog = getLocalStorage("GLOBAL_LOG_DATA");
+if (checkLog == null) {
+    setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
+}
+
 function checkLogIn() {
     const checkVal = getLocalStorage("GLOBAL_LOG_DATA");
+    // if (checkVal !=/)
     if (checkVal.token != "") {
         window.location.href = '/overview';
     } else {
@@ -66,7 +71,7 @@ function setLocalStorage(data, address){
 }
 
 function getLocalStorage(address){
-    let data = JSON.parse(localStorage.getItem(address));
+    let data = JSON.parse(localStorage.getItem(address)); 
     return data;
 }
 
@@ -86,16 +91,18 @@ function roleConfirmEvent(event) {
 
 function registrationEvent(event) {
     event.preventDefault();
-    let data = JSON.parse(localStorage.getItem('GLOBAL_LOG_DATA'));
+    let logData = JSON.parse(localStorage.getItem('GLOBAL_LOG_DATA'));
+    if (!logData.registration) {
+        logData.registration = {};
+    }
     const regInput = {
         "email": document.getElementById('mail').value,
         "password": document.getElementById('pass').value,
-        "role": data.role,
+        "role": logData.role,
         "name": document.getElementById('full-name').value
     }
-    // console.log(regInput);
 
-    let valid = true;[  ]
+    let valid = true;
     if (regInput.name === '') {
         document.getElementById('full-name-error').textContent = 'Tên đăng nhập không được để trống';
         valid = false;
@@ -128,7 +135,7 @@ function registrationEvent(event) {
         logData.registration.role = regInput.role;
         logData.registration.name = regInput.name;
         console.log(logData.registration);
-        fetchRegisterApi();
+        fetchRegisterApi(logData);
         document.getElementById('pass-allowed').textContent = 'Đã đăng ký thành công.';
         globalLogData.name = document.getElementById('full-name').value;
         setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
@@ -140,7 +147,7 @@ function registrationEvent(event) {
     console.log(JSON.stringify(logData.registration));
 }
 
-async function fetchRegisterApi() {
+async function fetchRegisterApi(logData) {
     await fetch(`https://xhubapi.voca.io.vn/api/v1/auth/register`, {
         method: "POST",
         body: JSON.stringify(logData.registration),
@@ -154,9 +161,10 @@ async function fetchRegisterApi() {
                 globalLogData.token = logData.data.token;
                 globalLogData.role = logData.role;  
                 setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
-                document.getElementById('pass-allowed').textContent = 'Đã đăng ký thành công.';
                 handleButtonEvent();
-            } else console.log(logData);
+                document.getElementById('pass-allowed').textContent = 'Đã đăng ký thành công.';
+            } else document.getElementById('pass-allowed').textContent = checkLogValidation(logData.error_code);
+            
         })
         .catch(err => {
             console.log(err);
@@ -185,12 +193,23 @@ async function fetchLoginApi() {
         .then(logData => {
             if (logData.error_code == 0) {
                 console.log(logData);
-                  globalLogData.token = logData.data.token;
+                globalLogData.token = logData.data.token;
                 setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
                 checkLogIn();
-            } else console.log(logData);
+            } 
         })
         .catch(err => {
             console.log(err);
         })
+}
+
+function checkLogValidation(code) {
+    if (code == 10004) return "Thông tin đăng nhập không hợp lệ."; else 
+    if (code == 10005) return "Tài khoản người dùng đã tồn tại."; else
+    if (code == 10006) return "Tài khoản người dùng không tồn tại"; else
+    if (code == 10007) return "Role không hợp lệ"; else
+    if (code == 10008) return "Email không hợp lệ."; else 
+    if (code == 20004) return "Bạn không phải là giáo viên."; else 
+    if (code == 20005) return "Không tìm thấy lớp."; else 
+    if (code == 20006) return "Bạn không phải là học sinh";
 }
