@@ -32,7 +32,24 @@ let globalLogData = {
     passed: false,  
     token: ""
 }
-setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
+
+function checkLogIn() {
+    const checkVal = getLocalStorage("GLOBAL_LOG_DATA");
+    if (checkVal.token != "") {
+        window.location.href = '/overview';
+    } else {
+        let globalLogData = {
+            name: "",
+            role: "",
+            passed: false,  
+            token: ""
+        }
+        setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
+    }
+}
+
+checkLogIn();
+
 
 function handleButtonEvent(event) {
     event.preventDefault();
@@ -46,6 +63,11 @@ function handleButtonEvent(event) {
 
 function setLocalStorage(data, address){
     localStorage.setItem(address, JSON.stringify(data));
+}
+
+function getLocalStorage(address){
+    let data = JSON.parse(localStorage.getItem(address));
+    return data;
 }
 
 function roleConfirmEvent(event) {
@@ -161,7 +183,12 @@ async function fetchLoginApi() {
     })
         .then(res => res.json())
         .then(logData => {
-            console.log(logData);
+            if (logData.error_code == 0) {
+                console.log(logData);
+                  globalLogData.token = logData.data.token;
+                setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
+                checkLogIn();
+            } else console.log(logData);
         })
         .catch(err => {
             console.log(err);
