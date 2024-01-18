@@ -148,7 +148,7 @@ function registrationEvent(event) {
 }
 
 async function fetchRegisterApi(logData) {
-    await fetch(`https://xhubapi.voca.io.vn/api/v1/auth/register`, {
+    await fetch(`http://192.168.1.143:7777/api/v1/auth/register`, {
         method: "POST",
         body: JSON.stringify(logData.registration),
         headers: {
@@ -177,12 +177,12 @@ function loginEvent(event) {
     logData.login.email = document.getElementById('log-mail').value;
     logData.login.password = document.getElementById('log-pass').value;
     logData.login.role = data.role;
-    fetchLoginApi();
     console.log(JSON.stringify(logData.login));
+    fetchLoginApi();
 }
 
 async function fetchLoginApi() {
-    await fetch(`https://xhubapi.voca.io.vn/api/v1/auth/login`, {
+    await fetch(`http://192.168.1.143:7777/api/v1/auth/login`, {
         method: "POST",
         body: JSON.stringify(logData.login),
         headers: {

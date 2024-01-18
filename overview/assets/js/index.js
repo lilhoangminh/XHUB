@@ -19,7 +19,7 @@ function getLocalStorage(address){
 checkLogIn();
 function fetchDetailApi() {
     let globalLogData = getLocalStorage("GLOBAL_LOG_DATA");
-    fetch(`https://xhubapi.voca.io.vn/api/v1/auth/me`, {
+    fetch(`http://192.168.1.143:7777/api/v1/auth/me`, {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ function fetchDetailApi() {
             console.log(data)
             if (data.error_code == 0) {
                 if (data.data.role == "student") {
-                    // window.location.href = '/student';
+                    window.location.href = '/student';
                 } else if (data.data.role == "teacher") {
                     // window.location.href = '/teacher';
                 }
