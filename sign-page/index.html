@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://4218478784-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/spaces%2F-MWcLXaW6te9yNIG__kn%2Favatar-1616661413606.png?generation=1616661413852661&alt=media">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Mind Hub - Sign in - Sign up</title>
+</head>
+<body>
+    <div class="role-check">
+        <h1>Xin chào bạn đến với XHub</h1>
+        <p>Xin chọn vai trò của bạn</p>
+        <select name="" id="s-role">
+            <option value="1">Tôi là học sinh</option>
+            <option value="2">Tôi là giáo viên</option>
+        </select>
+        <div class="role-confirm">Tiếp tục</div>
+    </div>
+    <div class="container hid" id="container">
+        <div class="form-container sign-up">
+            <form id="registration-form">
+                <h1>Tạo tài khoản</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                    <span>hoặc dùng email để đăng ký</span>
+                    <input type="text" id="full-name" name="full-name" placeholder="Tên tài khoản">
+                    <span class="error-message" id="full-name-error"></span>
+                    <input type="text" id="mail" name="mail" placeholder="Hộp thư điện tử">
+                    <span class="error-message" id="mail-error"></span>
+                    <input type="text" id="pass" name="pass" placeholder="Mật khẩu">
+                    <span class="error-message" id="pass-error"></span>
+                <button type="submit">Đăng ký</button>
+                    <span class="allow-message" id="pass-allowed"></span>
+            </form>
+        </div>
+
+        <div class="form-container sign-in">
+            <form id="login-form">
+                <h1>Đăng nhập</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                    <span>hoặc dùng email để đăng nhập</span>
+                    <input type="text" id="log-mail" name="full-name" placeholder="Hộp thư điện tử">
+                    <span class="error-message" id="log-mail-error"></span>
+                    <input type="text" id="log-pass" name="pass" placeholder="Mật khẩu">
+                    <span class="error-message" id="log-pass-error"></span>
+                    <a href="#">Quên mật khẩu?</a>
+                    <button type="submit">Đăng nhập</button>
+                    <span class="allow-message" id="log-allowed"></span>
+            </form>
+        </div>
+        
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Chào mừng bạn quay trở lại!</h1>
+                    <p>Hãy đăng nhập để biết thêm các thông tin mới nhất của trường Gia Định.</p>
+                    <button class="hidden" id="login">Đăng nhập</button>
+                    <a class="back_for" href="..">Quay lại trang chính</a>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Chào mừng bạn mới!</h1>
+                    <p>Hãy đăng ký để có thể sủ dụng các dịch vụ mới nhất tại website của trường.</p>
+                    <button class="hidden" id="register">Đăng ký</button>
+                    <a class="back_for" href="..">Quay lại trang chính</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/js/index.js" type="module"></script>
+</body>
+</html>
