@@ -1,3 +1,6 @@
+import {getLocalStorage, setLocalStorage} from '/assets/js/tools.js';
+import { API_DOMAIN } from '../../../config/api.js';
+
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
 const loginBtn = document.getElementById('login');  
@@ -64,15 +67,6 @@ function handleButtonEvent(event) {
         container.classList.remove("active");
     }
     
-}
-
-function setLocalStorage(data, address){
-    localStorage.setItem(address, JSON.stringify(data));
-}
-
-function getLocalStorage(address){
-    let data = JSON.parse(localStorage.getItem(address)); 
-    return data;
 }
 
 function roleConfirmEvent(event) {
@@ -148,7 +142,7 @@ function registrationEvent(event) {
 }
 
 async function fetchRegisterApi(logData) {
-    await fetch(`http://192.168.1.143:7777/api/v1/auth/register`, {
+    await fetch(API_DOMAIN + `/api/v1/auth/register`, {
         method: "POST",
         body: JSON.stringify(logData.registration),
         headers: {
@@ -182,7 +176,7 @@ function loginEvent(event) {
 }
 
 async function fetchLoginApi() {
-    await fetch(`http://192.168.1.143:7777/api/v1/auth/login`, {
+    await fetch(API_DOMAIN + `/api/v1/auth/login`, {
         method: "POST",
         body: JSON.stringify(logData.login),
         headers: {
@@ -191,12 +185,12 @@ async function fetchLoginApi() {
     })
         .then(res => res.json())
         .then(logData => {
+            console.log(logData);
             if (logData.error_code == 0) {
-                console.log(logData);
                 globalLogData.token = logData.data.token;
                 setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
                 checkLogIn();
-            } 
+            } else document.getElementById('log-allowed').textContent = checkLogValidation(logData.error_code);
         })
         .catch(err => {
             console.log(err);
@@ -213,3 +207,5 @@ function checkLogValidation(code) {
     if (code == 20005) return "Không tìm thấy lớp."; else 
     if (code == 20006) return "Bạn không phải là học sinh";
 }
+        
+console.log(API_DOMAIN + `/api/v1/auth/register`);
