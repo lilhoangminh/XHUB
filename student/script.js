@@ -58,20 +58,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Show dialog profile menu
 document.addEventListener("DOMContentLoaded", function () {
-  let dropdown = document.querySelector('#profile');
-  let dialog = document.querySelector('.hidden');
+  let dropdown = document.querySelector("#profile");
+  let dialog = document.querySelector(".profile-box-hidden");
 
   dropdown.addEventListener("click", function () {
-    dialog.classList.toggle('hidden');
-    console.log("success");
+    dialog.classList.toggle("profile-box-hidden");
+  });
+  dialog.addEventListener("mouseleave", function () {
+    dialog.classList.add("profile-box-hidden");
   });
 });
 
-
 // Show notification dialog
-document.addEventListener("DOMContentLoaded", function() {
-  let noti_bell = document.querySelector('.notification-box');
-  console.log("success");
-})
+document.addEventListener("DOMContentLoaded", function () {
+  let noti_bell = document.querySelector(".notification-box");
+  let noti_dialog = document.querySelector(".noti-box");
 
-// Render Overview
+  noti_bell.addEventListener("click", function () {
+    noti_dialog.classList.toggle("noti-hidden");
+  });
+  noti_dialog.addEventListener("mouseleave", function () {
+    noti_dialog.classList.add("noti-hidden");
+  });
+});
