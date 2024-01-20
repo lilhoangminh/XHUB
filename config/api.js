@@ -1,1 +1,1 @@
-export const API_DOMAIN = 'http://192.168.1.143:7777';
+export const API_DOMAIN = 'https://xhubapi.voca.io.vn';
