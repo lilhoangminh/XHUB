@@ -42,7 +42,6 @@ if (checkLog == null) {
 
 function checkLogIn() {
     const checkVal = getLocalStorage("GLOBAL_LOG_DATA");
-    // if (checkVal !=/)
     if (checkVal.token != "") {
         window.location.href = '/overview';
     } else {
@@ -92,7 +91,7 @@ function registrationEvent(event) {
     const regInput = {
         "email": document.getElementById('mail').value,
         "password": document.getElementById('pass').value,
-        "role": logData.role,
+        "role": globalLogData.role,
         "name": document.getElementById('full-name').value
     }
 
@@ -152,9 +151,6 @@ async function fetchRegisterApi(logData) {
         .then(res => res.json())
         .then(logData => {
             if (logData.error_code == 0) {
-                globalLogData.token = logData.data.token;
-                globalLogData.role = logData.role;  
-                setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
                 handleButtonEvent();
                 document.getElementById('pass-allowed').textContent = 'Đã đăng ký thành công.';
             } else document.getElementById('pass-allowed').textContent = checkLogValidation(logData.error_code);
@@ -170,13 +166,13 @@ function loginEvent(event) {
     let data = JSON.parse(localStorage.getItem('GLOBAL_LOG_DATA'));
     logData.login.email = document.getElementById('log-mail').value;
     logData.login.password = document.getElementById('log-pass').value;
-    logData.login.role = data.role;
+    logData.login.role = data.role; 
     console.log(JSON.stringify(logData.login));
     fetchLoginApi();
 }
 
 async function fetchLoginApi() {
-    await fetch(API_DOMAIN + `/api/v1/auth/login`, {
+    await fetch(`${API_DOMAIN}/api/v1/auth/login`, {
         method: "POST",
         body: JSON.stringify(logData.login),
         headers: {
@@ -188,6 +184,7 @@ async function fetchLoginApi() {
             console.log(logData);
             if (logData.error_code == 0) {
                 globalLogData.token = logData.data.token;
+                globalLogData.name = logData.data.name
                 setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
                 checkLogIn();
             } else document.getElementById('log-allowed').textContent = checkLogValidation(logData.error_code);

@@ -1,3 +1,5 @@
+import { API_DOMAIN } from "../../../config/api.js";
+
 let checkLog = getLocalStorage("GLOBAL_LOG_DATA");
 if (checkLog == null) {
     setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
@@ -19,7 +21,7 @@ function getLocalStorage(address){
 checkLogIn();
 function fetchDetailApi() {
     let globalLogData = getLocalStorage("GLOBAL_LOG_DATA");
-    fetch(`http://192.168.1.143:7777/api/v1/auth/me`, {
+    fetch(`${API_DOMAIN}/api/v1/auth/me`, {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
@@ -33,10 +35,10 @@ function fetchDetailApi() {
                 if (data.data.role == "student") {
                     window.location.href = '/student';
                 } else if (data.data.role == "teacher") {
-                    // window.location.href = '/teacher';
+                    window.location.href = '/teacher';
                 }
             } else {
-                // window.location.href = '/';
+                window.location.href = '/';
             }
             
         })
