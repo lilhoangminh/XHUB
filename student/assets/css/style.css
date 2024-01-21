@@ -172,7 +172,7 @@ body {
   display: none;
 }
 
-.noti-box {
+.noti-dialog {
   top: 54px;
   left: 74%;
   background-color: rgb(255, 255, 255);

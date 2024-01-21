@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Link Box-icon -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <!-- Link JS -->
+    <script src="./assets/js/script.js"></script>
     <!-- Fav icon -->
     <link rel="shortcut icon" href="./Img/logo.png" type="image/x-icon" />
   </head>
@@ -37,7 +39,9 @@
                 <i class="bx bxs-bell"></i>
               </button>
             </div>
-            <div class="noti-dialog"></div>
+            <div class="noti-dialog noti-hidden">
+              <p class="noti-box-text">Thông báo</p>
+            </div>
             <div class="profile" id="profile">
               <img
                 class="user-avt"
@@ -55,7 +59,7 @@
           </div>
         </div>
       </div>
-      <div class="profile-box hidden">
+      <div class="profile-box profile-box-hidden">
         <ul class="profile-menu">
           <a href="">
             <span>

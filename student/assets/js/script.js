@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let dialog = document.querySelector(".profile-box-hidden");
 
   dropdown.addEventListener("click", function () {
-    dialog.classList.toggle("profile-box-hidden");
+    dialog.classList.remove("profile-box-hidden");
   });
   dialog.addEventListener("mouseleave", function () {
     dialog.classList.add("profile-box-hidden");
@@ -72,12 +72,16 @@ document.addEventListener("DOMContentLoaded", function () {
 // Show notification dialog
 document.addEventListener("DOMContentLoaded", function () {
   let noti_bell = document.querySelector(".notification-box");
-  let noti_dialog = document.querySelector(".noti-box");
+  let noti_dialog = document.querySelector(".noti-dialog");
 
   noti_bell.addEventListener("click", function () {
-    noti_dialog.classList.toggle("noti-hidden");
+    noti_dialog.classList.remove("noti-hidden");
   });
   noti_dialog.addEventListener("mouseleave", function () {
     noti_dialog.classList.add("noti-hidden");
   });
 });
+
+
+
+
