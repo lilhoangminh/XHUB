@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>XHub Classroom</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mind Hub</title>
     <!-- Link CSS -->
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css">
     <!-- Link Box-icon -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <!-- Link JS -->
-    <script src="./script.js"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <!-- Fav icon -->
     <link rel="shortcut icon" href="./Img/logo.png" type="image/x-icon" />
   </head>
@@ -42,10 +37,7 @@
                 <i class="bx bxs-bell"></i>
               </button>
             </div>
-            <div class="noti-box noti-hidden">
-              <p class="noti-box-text">Thông báo</p>
-              <ul class="noti-box-list"></ul>
-            </div>
+            <div class="noti-dialog"></div>
             <div class="profile" id="profile">
               <img
                 class="user-avt"
@@ -63,7 +55,7 @@
           </div>
         </div>
       </div>
-      <div class="profile-box profile-box-hidden">
+      <div class="profile-box hidden">
         <ul class="profile-menu">
           <a href="">
             <span>
@@ -100,7 +92,7 @@
               <li>
                 <div class="profile-img">
                   <img
-                    src="https://thiduakhenthuong.hcm.edu.vn/static/media/logoSo.7db8227d7a1d14015308.png"
+                    src="https://file.removal.ai/preview/622b43f3-8144-4ff0-aebc-7699834035ed-logoso-1573209877-8401-1573209934-1200x020191109084206-4832100.png"
                     alt=""
                   />
                 </div>
@@ -201,7 +193,7 @@
               </div>
             </div>
           </a>
-        </div>        
+        </div>
         <!-- Center content -->
         <div class="center-content">
           <div class="today-class classroom" id="today">
@@ -270,5 +262,7 @@
         <div class="right-content"></div>
       </div>
     </div>
-  </body>
+    <!-- Script -->
+    <script src="./assets/js/auth.js" type="module"></script>
+</body>
 </html>
