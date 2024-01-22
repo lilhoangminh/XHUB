@@ -47,6 +47,31 @@ export function verifyUserAccount() {
 
 }
 
-export async function fetchAPI(data, type, method, header){
-    await fetch(`${API_DOMAIN}/api/v1/auth/${type}`)
+export async function fetchAPI(data, type, method, header) {
+    let sc_header = {"Content-type": "application/json"};
+    
+    if (header != null) {
+        sc_header = {
+            "Content-type": "application/json",
+            ...header
+        };
+    }
+
+    let requestOptions = {
+        method: method,
+        headers: sc_header
+    };
+
+    if (method !== "GET") {
+        requestOptions.body = JSON.stringify(data);
+    }
+
+    try {
+        const response = await fetch(`${API_DOMAIN}/api/v1/auth/${type}`, requestOptions);
+
+        const responseData = await response.json();
+        return responseData;
+    } catch (err) {
+        return err;
+    }
 }

@@ -1,5 +1,6 @@
 import {getLocalStorage, setLocalStorage} from '/assets/js/tools.js';
 import { API_DOMAIN } from '../../../config/api.js';
+import { fetchAPI } from '../../../assets/js/tools.js';
 
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
@@ -205,5 +206,4 @@ function checkLogValidation(code) {
     if (code == 20005) return "Không tìm thấy lớp."; else 
     if (code == 20006) return "Bạn không phải là học sinh";
 }
-        
-console.log(API_DOMAIN + `/api/v1/auth/register`);
+
