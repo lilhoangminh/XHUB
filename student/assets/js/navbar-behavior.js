@@ -81,18 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
     noti_dialog.classList.add("noti-hidden");
   });
 });
-
-
-// render overview
-function renderOverview () {
-  const bodycontainer = document.querySelector(".body-container");
-  const left_side_menu = document.createElement("div");
-  left_side_menu.classList.add("left-side-menu");
-  bodycontainer.appendChild(left_side_menu);
-
   
-}
-renderOverview();
 
 
 

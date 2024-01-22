@@ -1,1 +1,1 @@
-export let lang_count = ['vie', 'eng'];
+export let lang_count = ['vi', 'en'];
