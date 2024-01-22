@@ -1,0 +1,1 @@
+export let lang_count = ['vie', 'eng'];

@@ -32,7 +32,8 @@ let globalLogData = {
     name: "",
     role: "",
     passed: false,  
-    token: ""
+    token: "",
+    lang: "vie"
 }
 
 let checkLog = getLocalStorage("GLOBAL_LOG_DATA");
