@@ -23,8 +23,9 @@
 import { renderLeftSide } from './left-side.js';
 
 const renderIndex = (container) => {
-    const leftSide = renderLeftSide(container);
-    container.appendChild(leftSide);
+    let bodyContainer = document.getElementById("body-container");
+    const leftSide = renderLeftSide();
+    bodyContainer.appendChild(leftSide);
 };
 
 let container = document.getElementById("container");

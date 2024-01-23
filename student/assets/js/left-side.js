@@ -46,7 +46,7 @@ const leftSideData = [
         widget_icon: "bx-trophy",
     },
 ];
-export const renderLeftSide = (container) => {
+export const renderLeftSide = () => {
     let leftSide = document.createElement("div");
     leftSide.setAttribute("id", "left-side");
     leftSide.classList.add("left-side-menu");
