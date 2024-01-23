@@ -174,33 +174,12 @@ function loginEvent(event) {
     fetchLoginApi();
 }
 
-async function fetchLoginApi() {
-    await fetch(`${API_DOMAIN}/api/v1/auth/login`, {
-        method: "POST",
-        body: JSON.stringify(logData.login),
-        headers: {
-            "Content-type": "application/json"
-        }
-    })
-        .then(res => res.json())
-        .then(logData => {
-            console.log(logData);
-            if (logData.error_code == 0) {
-                globalLogData.token = logData.data.token;
-                globalLogData.name = logData.data.name
-                setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
-                checkLogIn();
-            } else document.getElementById('log-allowed').textContent = checkLogValidation(logData.error_code);
-        })
-        .catch(err => {
-            console.log(err);
-        })
-}
+// git a
 
-// async function fetchLoginApi(data) {
-//     let da = await fetchAPI(data, "login", "POST", null);
-//     console.log(da);
-// }
+async function fetchLoginApi(data) {
+    let da = await fetchAPI(data, "login", "POST", null);
+    console.log(da);
+}
 
 // const test_data1 = {
 //     "email": "@gmail.com",
