@@ -1,6 +1,7 @@
 import {getLocalStorage, setLocalStorage} from '/assets/js/tools.js';
 import { API_DOMAIN } from '../../../config/api.js';
 import { fetchAPI } from '../../../assets/js/tools.js';
+import { checkLogValidation } from '../../../assets/js/tools.js';
 
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
@@ -196,14 +197,20 @@ async function fetchLoginApi() {
         })
 }
 
-function checkLogValidation(code) {
-    if (code == 10004) return "Thông tin đăng nhập không hợp lệ."; else 
-    if (code == 10005) return "Tài khoản người dùng đã tồn tại."; else
-    if (code == 10006) return "Tài khoản người dùng không tồn tại"; else
-    if (code == 10007) return "Role không hợp lệ"; else
-    if (code == 10008) return "Email không hợp lệ."; else 
-    if (code == 20004) return "Bạn không phải là giáo viên."; else 
-    if (code == 20005) return "Không tìm thấy lớp."; else 
-    if (code == 20006) return "Bạn không phải là học sinh";
-}
+// async function fetchLoginApi(data) {
+//     let da = await fetchAPI(data, "login", "POST", null);
+//     console.log(da);
+// }
 
+// const test_data1 = {
+//     "email": "@gmail.com",
+//     "password": "123123",
+//     "role": "teacher"
+// }
+// console.log(JSON.stringify(test_data1));
+// async function fetchData() {
+//     let da = await fetchAPI(test_data1, "login", "POST", null);
+//     console.log(da);
+// }
+
+// fetchData();
