@@ -21,7 +21,7 @@
 //     })
 
 import { renderLeftSide } from './left-side.js';
-console.log(123);
+
 const renderIndex = (container) => {
     const leftSide = renderLeftSide(container);
     container.appendChild(leftSide);
