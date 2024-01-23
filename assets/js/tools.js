@@ -67,8 +67,7 @@ export async function fetchAPI(data, type, method, header) {
     }
 
     try {
-        const response = await fetch(`${API_DOMAIN}/api/v1/auth/${type}`, requestOptions);
-
+        const response = await fetch(`${API_DOMAIN}/api/v1/auth/${type}`, requestOptions);  
         const responseData = await response.json();
         return responseData;
     } catch (err) {
