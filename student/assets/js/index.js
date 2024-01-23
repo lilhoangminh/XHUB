@@ -7,7 +7,7 @@ let global_lang = '';
 
 for (let i of lang_count) {
     if (lang == i) {
-        global_lang = i;
+        global_lang = i; 
         break;
     }
 }
