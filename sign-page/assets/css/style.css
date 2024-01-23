@@ -167,8 +167,7 @@ body{
     border-radius: 0 150px 100px 0;
 }
 
-.toggle{
-    background-color: #c91717;
+.toggle{background-color: #c91717;
     height: 100%;
     background: linear-gradient(to right, #FF6666, #c91717);
     color: #fff;
