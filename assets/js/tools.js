@@ -22,7 +22,7 @@ export function popupAlert(title, content){
 
 export function verifyUserAccount() {
     const globalLogData = getLocalStorage("GLOBAL_LOG_DATA");
-    if (globalLogData != null && globalLogData != "") {
+    if (globalLogData != null && globalLogData.token != "") {
         fetch(`${API_DOMAIN}/api/v1/auth/me`, {
             method: "GET",
             headers: {
@@ -33,17 +33,12 @@ export function verifyUserAccount() {
         .then(res => res.json())
         .then(data => {
             console.log(data);  
-            if (data.error_code == 0) {
-                return true;
-            } else {
-                return false;
-            }
-            
+            if (data.error_code == 1) return 1; else return 0;
         })
         .catch(err => {
-            console.log(err);
+            return err;
         })
-    } else return false;
+    } else return 0;
 
 }
 

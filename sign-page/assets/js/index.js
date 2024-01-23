@@ -171,25 +171,17 @@ function loginEvent(event) {
     logData.login.password = document.getElementById('log-pass').value;
     logData.login.role = data.role; 
     console.log(JSON.stringify(logData.login));
-    fetchLoginApi();
+    fetchLoginApi(logData.login);
 }
 
-// git a
 
 async function fetchLoginApi(data) {
     let da = await fetchAPI(data, "login", "POST", null);
     console.log(da);
+    if (da.error_code == 0) {
+        globalLogData.token = da.data.token;
+        globalLogData.name = da.data.name
+        setLocalStorage(globalLogData, "GLOBAL_LOG_DATA");
+        checkLogIn();
+    } else document.getElementById('log-allowed').textContent = checkLogValidation(da.error_code);
 }
-
-// const test_data1 = {
-//     "email": "@gmail.com",
-//     "password": "123123",
-//     "role": "teacher"
-// }
-// console.log(JSON.stringify(test_data1));
-// async function fetchData() {
-//     let da = await fetchAPI(test_data1, "login", "POST", null);
-//     console.log(da);
-// }
-
-// fetchData();
