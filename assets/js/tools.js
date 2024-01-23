@@ -74,3 +74,14 @@ export async function fetchAPI(data, type, method, header) {
         return err;
     }
 }
+
+export function checkLogValidation(code) {
+    if (code == 10004) return "Thông tin đăng nhập không hợp lệ."; else 
+    if (code == 10005) return "Tài khoản người dùng đã tồn tại."; else
+    if (code == 10006) return "Tài khoản người dùng không tồn tại"; else
+    if (code == 10007) return "Role không hợp lệ"; else
+    if (code == 10008) return "Email không hợp lệ."; else 
+    if (code == 20004) return "Bạn không phải là giáo viên."; else 
+    if (code == 20005) return "Không tìm thấy lớp."; else 
+    if (code == 20006) return "Bạn không phải là học sinh";
+}
