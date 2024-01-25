@@ -83,5 +83,24 @@ document.addEventListener("DOMContentLoaded", function () {
 });
   
 
+var desiredLeftPosition = -300;
+var desiredTopPosition = 40;
+
+function updateSubDivPosition() {
+  var mainDiv = document.getElementById('profile');
+  var subDiv = document.getElementById('subDiv');
+
+  var mainDivRect = mainDiv.getBoundingClientRect();
+
+  // Set the position of subDiv based on mainDiv's position
+  subDiv.style.left = mainDivRect.left + desiredLeftPosition + 'px';
+  subDiv.style.top = mainDivRect.top + desiredTopPosition + 'px';
+}
+updateSubDivPosition();
+
+
+window.addEventListener('resize', function() {
+  updateSubDivPosition();
+});
 
 
