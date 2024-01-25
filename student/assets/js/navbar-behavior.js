@@ -83,24 +83,42 @@ document.addEventListener("DOMContentLoaded", function () {
 });
   
 
-var desiredLeftPosition = -300;
-var desiredTopPosition = 40;
 
-function updateSubDivPosition() {
-  var mainDiv = document.getElementById('profile');
-  var subDiv = document.getElementById('subDiv');
 
-  var mainDivRect = mainDiv.getBoundingClientRect();
+
+const desiredLeftPosition = -300;
+const desiredNotiLeftPosition = -350;
+const desiredTopPosition = 40;
+const profileDivRect = profile.getBoundingClientRect();
+const notiDivRect = noti.getBoundingClientRect();
+
+
+function updateProfileBoxPosition() {
+  var profile = document.getElementById('profile');
+  var profileBox = document.getElementById('profileBox');
+
 
   // Set the position of subDiv based on mainDiv's position
-  subDiv.style.left = mainDivRect.left + desiredLeftPosition + 'px';
-  subDiv.style.top = mainDivRect.top + desiredTopPosition + 'px';
+  profileBox.style.left = profileDivRect.left + desiredLeftPosition + 'px';
+  profileBox.style.top = profileDivRect.top + desiredTopPosition + 'px';
 }
-updateSubDivPosition();
+updateProfileBoxPosition();
+
+
+function updateNotiBoxPostition () {
+  var noti = document.getElementById('noti');
+  var notiBox = document.getElementById('notiBox');
+
+  notiBox.style.left = notiDivRect.left + desiredNotiLeftPosition + 'px';
+  notiBox.style.top = notiDivRect.top + desiredTopPosition + 'px';
+}
+
+updateNotiBoxPostition();
 
 
 window.addEventListener('resize', function() {
-  updateSubDivPosition();
+  updateProfileBoxPosition();
+  updateNotiBoxPostition();
 });
 
 

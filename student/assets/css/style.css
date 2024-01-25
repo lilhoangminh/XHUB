@@ -462,7 +462,7 @@ body {
   background: #f0f2f5;
   flex-direction: column;
   display: flex;
-  left: 350px;
+  left: 18%;
   position: absolute;
   width: calc(100vw - 365px);
   /* width: 100%; */
