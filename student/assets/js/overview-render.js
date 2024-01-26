@@ -88,5 +88,3 @@ export const renderOverview = () => {
 
 
 
-const center_content = document.createElement("div");
-const body_container = document.getElementById('')
