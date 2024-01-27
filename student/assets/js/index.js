@@ -30,3 +30,14 @@ const renderIndex = (container) => {
 
 let container = document.getElementById("container");
 renderIndex(container);
+
+
+
+import { centerContent } from './overview-render.js';
+
+const renderCenterContent = () => {
+    let centerContainer = document.getElementById("center-content");
+    const centerElements = centerContent();
+    centerContainer.appendChild(centerElements);
+};
+renderCenterContent();

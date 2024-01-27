@@ -86,4 +86,94 @@ export const renderOverview = () => {
     return leftSide;
 }
 
+const centerContentData = [
+    {
+        title: {
+            "vi": "Phòng học hôm nay",
+            "eng": "Today's classes",
+        },
+        roomImg: "https://shub.edu.vn/images/overview-schedule.svg",
+        titleSub: {
+            "vi": "Không có buổi học nào diễn ra hôm nay",
+            "en": "There are no classes taking place today",
+        },
+    },
+    {
+        title: {
+            "vi": "Bài tập chưa nộp",
+            "eng": "Unsubmitted assignments",
+        },
+        roomImg: "https://shub.edu.vn/images/overview-homework.svg",
+        titleSub: {
+            "vi": "Thật tuyệt vời! Tất cả bài tập đã được hoàn thành",
+            "en": "It's awesome! All assignments have been completed",
+        },
+    },
+    {
+        title: {
+            "vi": "Tài liệu chưa đọc",
+            "eng": "Unread material",
+        },
+        roomImg: "https://shub.edu.vn/images/overview-file.svg",
+        titleSub: {
+            "vi": "Bạn đã đọc hết tất cả tài liệu",
+            "en": "You've read all the documents",
+        },
+    },
+    {
+        title: {
+            "vi": "Bài giảng chưa xem",
+            "eng": "Unwatched sermons",
+        },
+        roomImg: "https://shub.edu.vn/images/overview-lesson.svg",
+        titleSub: {
+            "vi": "Bạn đã xem hết tất cả bài giảng",
+            "en": "You've watched all the lectures",
+        },
+    },
+    {
+        title: {
+            "vi": "Thành tích học tập",
+            "eng": "Achievments",
+        },
+        roomImg: "https://shub.edu.vn/images/overview-achievement.svg",
+        titleSub: {
+            "vi": "Bạn chưa có kết quả nào để hiển thị",
+            "en": "You don't have any results to show yet",
+        },
+    },
+]
 
+export const centerContent = () => {
+    let centerElements = document.createElement("div");
+    centerElements.setAttribute("id", "center-content");
+    centerElements.classList.add("center-content");
+
+    for (let i of centerContentDataData) {
+
+        const title = document.createElement("h6");
+        title.innerHTML = i.title[global_lang];
+
+        const flexBox = document.createElement("div");
+        flexBox.classList.add("aic", "df")
+        flexBox.appendChild(widgetIcon);
+        flexBox.appendChild(title);
+        flexBox.appendChild(checkIcon);
+
+        const objectDiv = document.createElement("div");
+        objectDiv.classList.add("object-div");
+        objectDiv.appendChild(flexBox);
+
+        // const leftSideItem = document.createElement("a");
+        // leftSideItem.classList.add("object");
+        // if (i.default_selected) {
+        //     leftSideItem.classList.add("left-menu-selected");
+        // }
+        // leftSideItem.setAttribute("href", `#${i.href_part}`);
+
+        leftSideItem.appendChild(objectDiv);
+        centerElements.appendChild(leftSideItem);
+    }
+
+    return centerElements;
+}
