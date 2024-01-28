@@ -175,5 +175,5 @@ export const centerContent = () => {
         centerElements.appendChild(leftSideItem);
     }
 
-    
+    return centerElements;
 }
