@@ -38,6 +38,6 @@ import { centerContent } from './overview-render.js';
 const renderCenterContent = () => {
     let centerContainer = document.getElementById("center-content");
     const centerElements = centerContent();
-    centerContainer.appendChild(centerElements);
+    centerElements.appendChild(centerContainer);
 };
 renderCenterContent();

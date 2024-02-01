@@ -86,6 +86,7 @@ export const renderOverview = () => {
     return leftSide;
 }
 
+
 const centerContentData = [
     {
         title: {
@@ -149,30 +150,37 @@ export const centerContent = () => {
     centerElements.setAttribute("id", "center-content");
     centerElements.classList.add("center-content");
 
-    for (let i of centerContentDataData) {
+
+    for (let i of centerContentData) {
 
         const title = document.createElement("h6");
+        title.classList.add("title");
         title.innerHTML = i.title[global_lang];
 
-        const flexBox = document.createElement("div");
-        flexBox.classList.add("aic", "df")
-        flexBox.appendChild(widgetIcon);
-        flexBox.appendChild(title);
-        flexBox.appendChild(checkIcon);
+        const render = document.createElement("div");
+        render.classList.add("render");
 
-        const objectDiv = document.createElement("div");
-        objectDiv.classList.add("object-div");
-        objectDiv.appendChild(flexBox);
+        const classImg = document.createElement("img");
+        classImg.classList.add("img");
+        classImg.setAttribute('src', i.roomImg);
+        render.appendChild(classImg);
 
-        // const leftSideItem = document.createElement("a");
-        // leftSideItem.classList.add("object");
-        // if (i.default_selected) {
-        //     leftSideItem.classList.add("left-menu-selected");
-        // }
-        // leftSideItem.setAttribute("href", `#${i.href_part}`);
+        const sub = document.createElement("p");
+        sub.innerHTML = i.titleSub[global_lang];
+        sub.classList.add("sub");
 
-        leftSideItem.appendChild(objectDiv);
-        centerElements.appendChild(leftSideItem);
+        render.appendChild(sub);
+
+
+
+        
+        const bodyContainer = document.getElementById("body-container");
+        const classroom = document.createElement("div");
+        classroom.classList.add("classroom");
+        classroom.appendChild(title);
+        classroom.appendChild(render);
+        centerElements.appendChild(classroom);
+        bodyContainer.appendChild(centerElements);
     }
 
     return centerElements;
